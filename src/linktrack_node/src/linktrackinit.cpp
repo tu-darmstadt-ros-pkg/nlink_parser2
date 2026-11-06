@@ -13,6 +13,7 @@
 #include "serial/serial_port.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include "std_msgs/msg/string.hpp"
+#include "std_msgs/msg/u_int8_multi_array.hpp"
 
 #include "nlink_utils/nutils.h"
 #include "nlink_utils/linktrack_protocols.h"
@@ -67,10 +68,22 @@ static void DTCallback(const std_msgs::msg::String::SharedPtr msg)
     }
 }
 
+// Raw-bytes variant: std_msgs/String is UTF-8 text in rclpy, so arbitrary
+// binary payloads (bytes > 127, NUL) cannot be sent through it reliably.
+static void DTBytesCallback(const std_msgs::msg::UInt8MultiArray::SharedPtr msg)
+{
+    if (serial_ && !msg->data.empty())
+    {
+        serial_->write(std::string(msg->data.begin(), msg->data.end()));
+    }
+}
+
 void Init::initDataTransmission()
 {
     dt_sub_ = node_->create_subscription<std_msgs::msg::String>(
         "nlink_linktrack_data_transmission", 1000, DTCallback);
+    dt_bytes_sub_ = node_->create_subscription<std_msgs::msg::UInt8MultiArray>(
+        "nlink_linktrack_data_transmission_bytes", 1000, DTBytesCallback);
 }
 
 void Init::initAnchorFrame0(NProtocolExtracter* protocol_extraction)
