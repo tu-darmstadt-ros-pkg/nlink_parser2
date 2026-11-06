@@ -23,7 +23,6 @@ target_sources(nlink_utils PRIVATE
   nlink_unpack/nlink_linktrack_anchorframe0.c
   nlink_unpack/nlink_iot_frame0.c
   nlink_unpack/nlink_linktrack_aoa_nodeframe0.c
-  nlink_unpack/nlink_linktrack_nodeframe0.c
   nlink_unpack/nlink_linktrack_nodeframe1.c
   nlink_unpack/nlink_linktrack_nodeframe2.c
   nlink_unpack/nlink_linktrack_nodeframe3.c
@@ -31,6 +30,7 @@ target_sources(nlink_utils PRIVATE
   nlink_unpack/nlink_linktrack_nodeframe5.c
   nlink_unpack/nlink_linktrack_nodeframe6.c
 
+  src/nlink_linktrack_nodeframe0/nlink_linktrack_nodeframe0.c
   src/nlink_linktrack_nodeframe7/nlink_linktrack_nodeframe7.c
 
   nlink_unpack/nlink_linktrack_tagframe0.c

@@ -3,7 +3,7 @@
 
 #include "nlink_utils/nlink_protocol.h"
 #include "nlink_linktrack_anchorframe0.h"
-#include "nlink_linktrack_nodeframe0.h"
+#include "nlink_linktrack_nodeframe0/nlink_linktrack_nodeframe0.h"
 #include "nlink_linktrack_nodeframe1.h"
 #include "nlink_linktrack_nodeframe2.h"
 #include "nlink_linktrack_nodeframe3.h"
