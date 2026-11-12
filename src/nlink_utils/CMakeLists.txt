@@ -58,10 +58,9 @@ target_include_directories(nlink_utils PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/nlink_unpack>
 )
 
-ament_target_dependencies(nlink_utils
-  rclcpp
-  std_msgs
-  rosidl_default_runtime
+target_link_libraries(nlink_utils
+  rclcpp::rclcpp
+  ${std_msgs_TARGETS}
 )
 
 target_link_libraries(nlink_utils

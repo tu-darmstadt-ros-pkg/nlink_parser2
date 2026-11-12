@@ -107,10 +107,10 @@ target_include_directories(linktrack_aoa_node PUBLIC
 )
 
 foreach(target_name tofsense_node tofsensem_node linktrack_node linktrack_aoa_node)
-  ament_target_dependencies(${target_name}
-    rclcpp
-    std_msgs
-    builtin_interfaces
+  target_link_libraries(${target_name}
+    rclcpp::rclcpp
+    ${std_msgs_TARGETS}
+    ${builtin_interfaces_TARGETS}
   )
 
   target_link_libraries(${target_name}
